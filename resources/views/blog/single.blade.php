@@ -6,7 +6,9 @@
 
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<img src="{{asset('/images/' . $post->image)}}" width="800" height="400" />
+			@if(!empty($post->image))
+				<img src="{{asset('/images/' . $post->image)}}" width="800" height="400" />
+			@endif
 			<h1>{{ $post->title }}</h1>
 			<p>{!! $post->body !!}</p>
 			<hr>
@@ -24,7 +26,7 @@
 						<img src="{{ "https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?s=50&d=monsterid" }}" class="author-image">
 						<div class="author-name">
 							<h4>{{ $comment->name }}</h4>
-							<p class="author-time">{{ date('F nS, Y - g:iA' ,strtotime($comment->created_at)) }}</p>
+							<p class="author-time">{{ date('F dS, Y - g:iA' ,strtotime($comment->created_at)) }}</p>
 						</div>
 
 					</div>
